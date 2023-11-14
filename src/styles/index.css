@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants; 
+
+:root {
+    --main-blue: #00b6cd; 
+    --main-lime: #d0f835;
+}
+
+.text-main-blue {
+    color: var(--main-blue);
+}
+
+.text-main-lime {
+    color: var(--main-lime);
+}
+
+.bg-main-blue {
+    background-color: var(--main-blue);
+}
+
+.bg-main-lime {
+    background-color: var(--main-lime);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+.ram {
+    font-family: ram;
+} 
+
+*::-webkit-scrollbar {
+    display: none;
+}
+  
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+* {
+    font-family: figtree; 
+}
+
+
+@font-face {
+	font-family: ram;
+	src: url('./fonts/ram.ttf');
+}
