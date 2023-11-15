@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export async function getEpisodes() {
+export async function getEpisodes(page) { 
     try {
-        const response = await axios.get('https://rickandmortyapi.com/api/episode')
+        const response = await axios.get(`https://rickandmortyapi.com/api/episode?page=${ page }`)
 
         if(
             response.status == 200
-            && response.data.results
-        ) return response.data.results; 
+            && response.data
+        ) return response.data; 
 
         return false; 
     } catch (error) {
