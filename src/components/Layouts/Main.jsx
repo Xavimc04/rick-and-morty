@@ -2,13 +2,14 @@ import Header from "../Header"
 import { ApplicationContext } from "../../context/Application.context"
 import Footer from "../Footer"
 import { AnimatePresence } from "framer-motion"
+import Navigator from "../Navigator"
 
 export default function MainLayout({
     children,
     state, 
     dispatch
 }) {
-    return <div className="text-white flex flex-col justify-between gap-3 h-screen items-center w-screen overflow-y-scroll bg-black">
+    return <div className="flex flex-col justify-between items-center w-screen overflow-y-scroll bg-black">
         <ApplicationContext.Provider
             value={{
                 state,
@@ -16,6 +17,8 @@ export default function MainLayout({
             }}
         >
             <AnimatePresence>
+                <Navigator />
+
                 <Header />
                 
                 { children}
