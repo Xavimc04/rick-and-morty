@@ -3,6 +3,7 @@ import { ApplicationContext } from "../../context/Application.context"
 import Footer from "../Footer"
 import { AnimatePresence } from "framer-motion"
 import Navigator from "../Navigator"
+import Inspect from "../Inspect"
 
 export default function MainLayout({
     children,
@@ -21,7 +22,9 @@ export default function MainLayout({
 
                 <Header />
                 
-                { children}
+                <Inspect />
+
+                { children }
 
                 <Footer />
             </AnimatePresence>
