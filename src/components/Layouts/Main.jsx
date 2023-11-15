@@ -24,7 +24,9 @@ export default function MainLayout({
                 
                 <Inspect />
 
-                { children }
+                <main className="w-[70%] mt-20 flex flex-col gap-16 text-white">
+                    { children }
+                </main>
 
                 <Footer />
             </AnimatePresence>

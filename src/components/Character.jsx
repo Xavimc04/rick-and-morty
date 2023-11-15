@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { ApplicationContext } from "../context/Application.context";
 
 export default function Character({
-    character_endpoint
+    character_endpoint, 
+    single_character
 }) {
     const { dispatch } = useContext(ApplicationContext);
     const [character, setCharacter] = useState({}); 
@@ -17,8 +18,10 @@ export default function Character({
     }
 
     useEffect(() => {
-        fetchCharacter() 
-    }, [character_endpoint])
+        if(character_endpoint) fetchCharacter();
+        
+        if(single_character) setCharacter(single_character)
+    }, [character_endpoint, single_character])
 
     if(!character) return <div>
         Loading...
@@ -47,7 +50,7 @@ export default function Character({
                 style={{
                     zIndex: 30
                 }}
-                className="absolute hidden top-0 w-full h-full group-hover:flex group-hover:bg-black/70 items-center justify-center transition-all"
+                className="absolute hidden text-ellipsis truncate top-0 w-full h-full group-hover:flex group-hover:bg-black/70 items-center justify-center transition-all"
             >
                 { character.name }
             </p>

@@ -9,6 +9,10 @@ const routes = [
     {
         path: '/episodes',
         name: 'Episodes'
+    }, 
+    {
+        path: '/characters',
+        name: 'Characters'
     }
 ];
 

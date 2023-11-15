@@ -15,6 +15,22 @@ export async function getEpisodes(page) {
     }
 }
 
+export async function getEpisode(id) {
+    if(!id) return false; 
+
+    try {
+        const response = await axios.get(`https://rickandmortyapi.com/api/episode/${ id }`)
+
+        if(
+            response.status == 200
+        ) return response.data; 
+
+        return false; 
+    } catch (error) {
+        return false; 
+    }
+}
+
 export async function getCharacter(endpoint) {
     if(!endpoint) return false; 
 

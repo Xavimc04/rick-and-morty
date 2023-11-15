@@ -45,12 +45,13 @@ export default function Episodes() {
         fetchEpisodes();
     }, []);
 
-    return state.episodes && <div className="w-[70%] mt-20 flex flex-col gap-16 text-white">
+    return state.episodes && <>
         {
             state.episodes.map(episode => {
                 return <Episode 
                     key={ episode.id + episode.name }
                     episode={ episode }
+                    scrollable={ true }
                 />
             })
         }
@@ -63,5 +64,5 @@ export default function Episodes() {
                 page={ searchParams.get("page") }
             />
         }
-    </div>
+    </>
 }

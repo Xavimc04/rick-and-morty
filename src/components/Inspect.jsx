@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ApplicationContext } from "../context/Application.context"; 
+import { ApplicationContext } from "../context/Application.context";  
 
 export default function Inspect() {
     const { state, dispatch } = useContext(ApplicationContext); 
