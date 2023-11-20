@@ -44,6 +44,7 @@ export default function Character({
                 className="h-[200px] w-[200px] rounded-md"
                 src={ character.image } 
                 alt={ character.name }
+                onError={(e) => e.target.src = 'https://images2.alphacoders.com/928/928177.jpg'}
             />
 
             <p

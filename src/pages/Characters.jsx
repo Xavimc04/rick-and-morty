@@ -10,50 +10,34 @@ export default function Characters() {
     const [search, setSearch] = useState("");
 
     const fetchCharacters = async (newPage) => {
-        let currentPage = searchParams.get("page") || 1; 
+        let currentPage = searchParams.get("page") || 1;
 
         if(newPage) {
-            const filters = {
-                ["page"]: newPage,
-            }
-
-            if(searchParams.get("name") != null && searchParams.get("name").length > 0) filters["name"] = searchParams.get("name");
-
-            setSearchParams(filters)  
-
-            currentPage = newPage;
+            currentPage = newPage > 0 ? newPage : 1;
         }
-
-        const response = await getCharacter(`https://rickandmortyapi.com/api/character?page=${ currentPage }${ searchParams.get("name") != null && searchParams.get("name").length > 0 ? `&name=${ search }` : '' }`)
+    
+        const response = await getCharacter(`https://rickandmortyapi.com/api/character?page=${ currentPage }${
+            search && search.length > 0 ? '&name=' + search : ''
+        }`)
 
         if(response) setData(response); 
     }
 
+    // @ onSearchUpdate
     useEffect(() => {
-        if(search.length > 0) setSearchParams({
-            ["page"]: searchParams.get("page") || 1, 
-            ["name"]: search
-        }); 
-        else setSearchParams({
-            ["page"]: searchParams.get("page"), 
-        })
+        if(search.length > 0) {
+            setSearchParams({ page: 1, name: search });
+        } else {
+            setSearchParams({ page: 1 });
+        }
 
         fetchCharacters();
     }, [search])
 
+    // @ onLoad
     useEffect(() => {
-        let currentPage = searchParams.get("page"); 
-
-        setSearch(searchParams.get("name") || "");
-
-        if(!currentPage || isNaN(Number(currentPage))) {
-            const filters = {
-                ["page"]: 1,
-            }
-
-            if(searchParams.get("name") != null && searchParams.get("name").length > 0) filters["name"] = searchParams.get("name");
-
-            setSearchParams(filters)    
+        if(searchParams.get("name") && searchParams.get("name").length > 0) {
+            setSearch(searchParams.get("name"));
         }
 
         fetchCharacters(); 
@@ -72,9 +56,7 @@ export default function Characters() {
                 placeholder="Search by character name..."
                 className="flex-1 bg-transparent outline-none text-white"
                 value={ search }
-                onInput={(e) => {
-                    setSearch(e.target.value); 
-                }}
+                onInput={(e) => setSearch(e.target.value)}
             />
         </div>
 

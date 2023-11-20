@@ -46,3 +46,18 @@ export async function getCharacter(endpoint) {
         return false; 
     }
 }
+
+export async function getLocations(page) { 
+    try {
+        const response = await axios.get(`https://rickandmortyapi.com/api/location?page=${ page }`)
+
+        if(
+            response.status == 200
+            && response.data
+        ) return response.data; 
+
+        return false; 
+    } catch (error) {
+        return false; 
+    }
+}

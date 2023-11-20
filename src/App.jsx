@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Episodes from  './pages/Episodes';
-import Main from './pages/Main';
+import Episodes from  './pages/Episodes'; 
 import MainLayout from "./components/Layouts/Main";
 import { useReducer } from "react";
 import reducer, { initialState } from "./utils/reducer";
@@ -14,10 +13,9 @@ export default function App() {
         <BrowserRouter>
             <MainLayout state={ state } dispatch={ dispatch }>
                 <Routes>
-                    <Route path="/" element={ <Main /> } />
+                    <Route path="/" element={ <Characters /> } />
                     <Route path="/episodes" element={ <Episodes /> } />
                     <Route path="/episodes/:episode" element={ <SingleEpisode /> } />
-                    <Route path="/characters" element={ <Characters /> } />
                 </Routes>
             </MainLayout>
         </BrowserRouter>

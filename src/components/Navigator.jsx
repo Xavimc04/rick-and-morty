@@ -4,15 +4,11 @@ import { NavLink, } from 'react-router-dom';
 const routes = [
     {
         path: '/',
-        name: 'Main'
+        name: 'Characters'
     },
     {
         path: '/episodes',
         name: 'Episodes'
-    }, 
-    {
-        path: '/characters',
-        name: 'Characters'
     }
 ];
 
