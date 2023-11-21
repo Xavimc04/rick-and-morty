@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ApplicationContext } from "../context/Application.context";  
+import { ApplicationContext } from "../context/Application.context";   
 
 export default function Inspect() {
     const { state, dispatch } = useContext(ApplicationContext); 
@@ -47,8 +47,11 @@ export default function Inspect() {
                     </small>
                 </div>
 
-                <span className="material-symbols-outlined self-center cursor-pointer hover:opacity-50 transition-all">
-                    public
+                <span onClick={() => {
+                    var msg = new SpeechSynthesisUtterance(`${ state.selectedCharacter.name }, ${ state.selectedCharacter.species } species and ${ state.selectedCharacter.gender } gender`);
+                    window.speechSynthesis.speak(msg);
+                }} className="material-symbols-outlined self-center cursor-pointer hover:opacity-50 transition-all">
+                    mic
                 </span>
             </section>
 
